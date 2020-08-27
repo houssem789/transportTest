@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\StationRepository")
  */
 class Station
 {
@@ -37,8 +37,6 @@ class Station
      * @ORM\ManyToMany(targetEntity=ModeTransport::class, inversedBy="stations")
      */
     private $ModeTransports;
-
-
 
     /**
      * @ORM\ManyToMany(targetEntity=Terminus::class, mappedBy="stations")

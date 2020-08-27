@@ -20,12 +20,11 @@
 			<div class="starter-template">
 				<form id="formId" action='/'>
 					<div class="form-group">
-						<label for="exampleInput">Numero de la ligne</label>
-						<input type="text" autocomplete="off" class="form-control" id="ligne" aria-describedby="Help" placeholder="Enter numéro de ligne">
+						<label for="exampleInputEmail1">Numero de la ligne</label>
+						<input type="text" class="form-control" id="ligne" aria-describedby="emailHelp" placeholder="Enter numéro de ligne">
 					</div>
 				</form>
 				<button class="filter-button btn btn-primary my-2">Filtrer</button>
-				<a href='https://localhost:8000/questions/4' class="btn btn-primary my-2">Annuler filtre</a>
 
 			</div>
 			<br>
@@ -38,15 +37,18 @@
 					</tr>
 				</thead>
 				<tbody>
+
 					{% for correspondance in correspondances %}
-						{% if ligne is defined and ligne is not empty and (correspondance.ModeTransport.Ligne == ligne or ligne in correspondance.ModeTransport.Ligne) %}
+						{% if ligne is defined and ligne is not empty and correspondance.ModeTransport.Ligne == ligne %}
 							<tr>
 								<td>{{ correspondance.id }}</td>
 								<td>{{ correspondance.station.nomGare }}</td>
 								<td>{{ correspondance.ModeTransport.Ligne }}</td>
 							</tr>
 						{% endif %}
+
 					{% endfor %}
+
 					{% if ligne is not defined %}
 						{% for correspondance in correspondances %}
 							<tr>
@@ -56,13 +58,14 @@
 							</tr>
 						{% endfor %}
 					{% endif %}
+
 				</tbody>
 			</table>
 		</main>
 		<!-- /.container -->
 
 		<!-- Bootstrap core JavaScript
-																																																																																																																																																																				    ================================================== -->
+																																																																																																																																																				    ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster --><script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"> </script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
